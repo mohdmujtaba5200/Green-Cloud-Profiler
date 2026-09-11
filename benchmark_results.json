@@ -1,0 +1,76 @@
+{
+    "bubble_sort": [
+        {
+            "execution_time_sec": 0.03324,
+            "total_cpu_time_sec": 0.03125,
+            "peak_memory_mb": 18.23,
+            "estimated_energy_joules": 1.09375,
+            "input_size": 1000
+        },
+        {
+            "execution_time_sec": 0.223043,
+            "total_cpu_time_sec": 0.234375,
+            "peak_memory_mb": 18.34,
+            "estimated_energy_joules": 8.203125,
+            "input_size": 2500
+        },
+        {
+            "execution_time_sec": 1.098411,
+            "total_cpu_time_sec": 1.078125,
+            "peak_memory_mb": 18.54,
+            "estimated_energy_joules": 37.734375,
+            "input_size": 5000
+        },
+        {
+            "execution_time_sec": 2.085136,
+            "total_cpu_time_sec": 2.015625,
+            "peak_memory_mb": 18.82,
+            "estimated_energy_joules": 70.546875,
+            "input_size": 7500
+        },
+        {
+            "execution_time_sec": 3.415964,
+            "total_cpu_time_sec": 3.40625,
+            "peak_memory_mb": 19.02,
+            "estimated_energy_joules": 119.21875,
+            "input_size": 10000
+        }
+    ],
+    "builtin_sort": [
+        {
+            "execution_time_sec": 1e-05,
+            "total_cpu_time_sec": 0.0,
+            "peak_memory_mb": 18.23,
+            "estimated_energy_joules": 0.0,
+            "input_size": 1000
+        },
+        {
+            "execution_time_sec": 2.4e-05,
+            "total_cpu_time_sec": 0.0,
+            "peak_memory_mb": 18.36,
+            "estimated_energy_joules": 0.0,
+            "input_size": 2500
+        },
+        {
+            "execution_time_sec": 9.7e-05,
+            "total_cpu_time_sec": 0.0,
+            "peak_memory_mb": 18.57,
+            "estimated_energy_joules": 0.0,
+            "input_size": 5000
+        },
+        {
+            "execution_time_sec": 4e-05,
+            "total_cpu_time_sec": 0.0,
+            "peak_memory_mb": 18.82,
+            "estimated_energy_joules": 0.0,
+            "input_size": 7500
+        },
+        {
+            "execution_time_sec": 7.1e-05,
+            "total_cpu_time_sec": 0.0,
+            "peak_memory_mb": 19.09,
+            "estimated_energy_joules": 0.0,
+            "input_size": 10000
+        }
+    ]
+}

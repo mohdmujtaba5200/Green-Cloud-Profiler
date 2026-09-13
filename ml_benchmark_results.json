@@ -1,0 +1,8 @@
+{
+    "workload": "Matrix Multiplication",
+    "matrix_size": "4000x4000",
+    "device": "CPU",
+    "execution_time_seconds": 0.6197,
+    "memory_peak_mb": 192.05,
+    "status": "Success"
+}

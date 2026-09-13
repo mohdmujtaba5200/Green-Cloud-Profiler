@@ -1,49 +1,47 @@
-"""
-Green-Cloud-Profiler Visualizer
-Module: plot_results.py
-Description: Reads benchmark JSON data and generates clean energy & execution 
-             time performance comparison plots using matplotlib.
-"""
-
 import json
+import os
 import matplotlib.pyplot as plt
 
-def generate_plots():
-    # Load JSON benchmark data
-    with open("benchmark_results.json", "r") as f:
-        data = json.load(f)
-
-    sizes = [item["input_size"] for item in data["bubble_sort"]]
-    bubble_energy = [item["estimated_energy_joules"] for item in data["bubble_sort"]]
-    builtin_energy = [item["estimated_energy_joules"] for item in data["builtin_sort"]]
+def generate_benchmark_plot():
+    files = {
+        "CPU Standard": "benchmark_results.json",
+        "PyTorch ML": "ml_benchmark_results.json"
+    }
     
-    bubble_time = [item["execution_time_sec"] for item in data["bubble_sort"]]
-    builtin_time = [item["execution_time_sec"] for item in data["builtin_sort"]]
+    workloads = []
+    times = []
+    memories = []
 
-    # Create figure with 2 subplots (Time vs Energy)
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+    for name, filepath in files.items():
+        if os.path.exists(filepath):
+            with open(filepath, "r") as f:
+                data = json.load(f)
+                workloads.append(name)
+                times.append(data.get("execution_time_seconds", 0))
+                memories.append(data.get("memory_peak_mb", 0))
 
-    # Plot 1: Execution Time
-    ax1.plot(sizes, bubble_time, marker='o', label='Bubble Sort O(N^2)', color='#e74c3c')
-    ax1.plot(sizes, builtin_time, marker='s', label='Timsort O(N log N)', color='#2ecc71')
-    ax1.set_title('Execution Time Comparison (Lower is Better)')
-    ax1.set_xlabel('Input Size (N)')
-    ax1.set_ylabel('Time (Seconds)')
-    ax1.grid(True, linestyle='--', alpha=0.6)
-    ax1.legend()
+    if not workloads:
+        print("No benchmark JSON files found.")
+        return
 
-    # Plot 2: Estimated Energy Footprint
-    ax2.plot(sizes, bubble_energy, marker='o', label='Bubble Sort O(N^2)', color='#e74c3c')
-    ax2.plot(sizes, builtin_energy, marker='s', label='Timsort O(N log N)', color='#2ecc71')
-    ax2.set_title('Estimated Energy Footprint (Lower is Better)')
-    ax2.set_xlabel('Input Size (N)')
-    ax2.set_ylabel('Energy (Joules)')
-    ax2.grid(True, linestyle='--', alpha=0.6)
-    ax2.legend()
+    fig, ax1 = plt.subplots(figsize=(8, 5))
 
-    plt.tight_layout()
-    plt.savefig("energy_benchmark_plot.png", dpi=300)
-    print("Graph generated successfully as energy_benchmark_plot.png!")
+    color = 'tab:blue'
+    ax1.set_xlabel('Workload Type')
+    ax1.set_ylabel('Execution Time (s)', color=color)
+    bars = ax1.bar(workloads, times, color=color, width=0.3, label='Time (s)')
+    ax1.tick_params(axis='y', labelcolor=color)
+
+    ax2 = ax1.twinx()
+    color = 'tab:red'
+    ax2.set_ylabel('Peak Memory (MB)', color=color)
+    ax2.plot(workloads, memories, color=color, marker='o', linewidth=2, label='Memory (MB)')
+    ax2.tick_params(axis='y', labelcolor=color)
+
+    plt.title("Green Cloud Profiler - Execution & Memory Metrics")
+    fig.tight_layout()
+    plt.savefig("benchmark_plot.png", dpi=300)
+    print("Chart saved to benchmark_plot.png")
 
 if __name__ == "__main__":
-    generate_plots()
+    generate_benchmark_plot()

@@ -1,33 +1,32 @@
 # Green-Cloud-Profiler 🌿⚡
 
-A lightweight, modular Python utility designed to profile CPU utilization, execution runtime, peak memory consumption, and estimated energy footprints of algorithmic workloads. Built to evaluate software efficiency for green computing applications.
+`Green-Cloud-Profiler` is a lightweight Python dynamic profiling engine designed to benchmark CPU runtime performance, track process memory footprints, and measure floating-point throughput for deep learning workloads (PyTorch). Built for system resource monitoring and sustainable green cloud compute optimization.
 
 ---
 
-## 📊 Benchmark Visualizations
+## 🚀 Key Features
 
-The profiler compares computational workloads (e.g., $O(N^2)$ Bubble Sort vs. $O(N \log N)$ Timsort) across scaled input sizes ($N = 1,000$ to $10,000$) to measure energy divergence:
-
-![Energy Benchmark Plot](energy_benchmark_plot.png)
-
----
-
-## 🛠️ Architecture
-
-* **`profiler.py`**: Core resource monitoring engine using system CPU clocks and memory tracking via `psutil`.
-* **`benchmark.py`**: Automated runner to profile algorithmic workloads across varying input sizes.
-* **`plot_result.py`**: Performance visualizer generating time and energy comparative graphs using `matplotlib`.
+* **Deterministic CPU Benchmarking**: High-resolution execution timing via high-precision performance counters.
+* **ML Workload Analytics**: Automated PyTorch tensor matrix multiplication profiling ($4000 \times 4000$).
+* **Memory Tracking**: Real-time Resident Set Size (RSS) peak RAM consumption logging using `psutil`.
+* **Automated Data Pipelines**: Multi-module pipeline outputting structured JSON telemetry (`benchmark_results.json`, `ml_benchmark_results.json`).
+* **Visual Telemetry**: Matplotlib visual engine generating resource comparison charts (`benchmark_plot.png`).
 
 ---
 
-## 🚀 Quickstart
+## 🛠 Tech Stack
 
-```bash
-# Install dependencies
-pip install psutil matplotlib
+* **Language**: Python 3.14+
+* **ML/Compute Engine**: PyTorch
+* **System Metrics**: `psutil`
+* **Data Visualization**: `matplotlib`
+* **Format & Storage**: JSON Data Streams
 
-# Run benchmark suite
-python benchmark.py
+---
 
-# Generate performance visualization
-python plot_result.py
+## 📥 Installation & Setup
+
+1. **Clone Repository**:
+   ```bash
+   git clone [https://github.com/mohdmujtaba5200/Green-Cloud-Profiler.git](https://github.com/mohdmujtaba5200/Green-Cloud-Profiler.git)
+   cd Green-Cloud-Profiler
